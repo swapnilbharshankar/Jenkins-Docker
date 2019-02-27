@@ -1,2 +1,2 @@
-my-image:14
+image_name: my-image:14
 container_name: apache

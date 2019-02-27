@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo "Changing the Variables"
                 script {
-                    sh """sed -i s/^image_name.*/'my-image:${env.BUILD_ID}'/g /main.yml"""
+                    sh """sed -i s/^image_name.*/'image_name: my-image:${env.BUILD_ID}'/g /main.yml"""
                 }
             }
         }
