@@ -1,8 +1,8 @@
 pipeline {
     agent any 
-    parameters {
-        choice(name: 'CHOICE', choices: ['section1', 'section2'], description: 'Pick something')
-    }
+//    parameters {
+//        choice(name: 'CHOICE', choices: ['section1', 'section2'], description: 'Pick something')
+//    }
     stages {
         stage ('Build Docker image') {
             steps {
