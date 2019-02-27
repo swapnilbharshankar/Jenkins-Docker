@@ -9,7 +9,7 @@ pipeline {
                 echo 'Starting to build docker image'
                 script {
 //                    def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    customImage = docker.build("${DOCKER_CREDENTIALS_USR}/my-image:${env.BUILD_ID}")
+                    customImage = docker.build("${env.DOCKER_CREDENTIALS_USR}/my-image:${env.BUILD_ID}")
                 }
             }
         }
