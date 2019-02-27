@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    image_name: my-image:11
+    container_name: apache
+  tasks:
+    - name: Create Apache Container
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        ports:
+          - 8088:80
+        timeout: 60

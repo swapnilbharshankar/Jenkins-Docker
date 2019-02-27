@@ -12,6 +12,14 @@ pipeline {
                 }
             }
         }
+        stage ('Change the Variable') {
+            steps {
+                echo "Changing the Variables"
+                script {
+                    sed -i s/^image_name.*/'my-image:${env.BUILD_ID}'/g main.yml
+                }
+            }
+        }
     }
     
 }
