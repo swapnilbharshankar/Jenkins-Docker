@@ -5,6 +5,9 @@ pipeline {
 //    }
     stages {
         stage ('Build Docker image') {
+            environment {
+                DOCKER_CREDENTIALS =credentials('docker_login')
+            }
             steps {
                 echo 'Starting to build docker image'
                 script {
