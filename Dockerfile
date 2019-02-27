@@ -1,30 +1,6 @@
-#
-# Nginx Dockerfile
-#
-# https://github.com/dockerfile/nginx
-#
-
-# Pull base image.
-FROM ubuntu
-
-# Install Nginx.
-RUN \
-  add-apt-repository -y ppa:nginx/stable && \
-  apt-get update && \
-  apt-get install -y nginx && \
-  rm -rf /var/lib/apt/lists/* && \
-  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
-  chown -R www-data:www-data /var/lib/nginx
-
-# Define mountable directories.
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
-
-# Define working directory.
-WORKDIR /etc/nginx
-
-# Define default command.
-CMD ["nginx"]
-
-# Expose ports.
-EXPOSE 80
-EXPOSE 443
+FROM ubuntu 
+RUN apt-get update 
+RUN apt-get install –y apache2 
+RUN apt-get install –y apache2-utils 
+RUN apt-get clean 
+EXPOSE 80 CMD [“apache2ctl”, “-D”, “FOREGROUND”]
