@@ -24,6 +24,7 @@ pipeline {
             steps {
                 echo "Pushing Image to Dockerhub"
                 docker.withRegistry('https://registry.hub.docker.com', 'docker_login')
+                customImage.push('latest')
                 }
             }
         }
