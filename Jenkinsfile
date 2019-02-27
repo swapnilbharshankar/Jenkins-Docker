@@ -21,6 +21,9 @@ pipeline {
             }
         }
         stage ('Push Image to Dockerhub') {
+            environment {
+                DOCKER_CREDENTIALS = credentials('docker_login')
+            }
             steps {
                 echo "Pushing Image to Dockerhub"
                 script {
