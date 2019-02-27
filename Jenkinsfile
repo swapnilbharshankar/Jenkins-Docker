@@ -5,7 +5,12 @@ pipeline {
     }
     stages {
         stage ('Build Docker image') {
-            def customImage = docker.build("mynginx:${env.BUILD_ID}")
+            steps {
+                echo 'Starting to build docker image'
+                script {
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                }
+            }
         }
     }
     
