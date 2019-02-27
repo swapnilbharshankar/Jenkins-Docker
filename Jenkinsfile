@@ -20,6 +20,14 @@ pipeline {
                 }
             }
         }
+        stage ('Push Image to Dockerhub') {
+            steps {
+                echo "Pushing Image to Dockerhub"
+                script {
+                    customImage.push()
+                }
+            }
+        }
     }
     
 }
