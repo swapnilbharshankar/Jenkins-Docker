@@ -4,6 +4,10 @@ pipeline {
 //        choice(name: 'CHOICE', choices: ['section1', 'section2'], description: 'Pick something')
 //    }
     stages {
+        stage ('Checkout Git')
+            steps {
+                checkout scm
+            }
         stage ('Build Docker image') {
             environment {
                 DOCKER_CREDENTIALS =credentials('docker_login')
