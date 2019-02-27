@@ -6,7 +6,7 @@ pipeline {
         }
         stages {
             stage ('Build Docker image')
-            def customImage = docker.build("my-nginx:${env.BUILD_ID}")
+            def customImage = docker.build("mynginx:${env.BUILD_ID}")
         }
     }
 }
