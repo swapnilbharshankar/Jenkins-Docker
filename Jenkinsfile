@@ -39,6 +39,7 @@ pipeline {
                 script {
                     stage ('Push') {
                         docker.withRegistry('https://registry.hub.docker.com', 'docker_login') {
+                            customImage.push("${env.BUILD_NUMBER}")
                             customImage.push('latest')
                         }
                     }
