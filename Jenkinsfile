@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     image_tag = sh (
-                        script: 'docker images --format "{{.Tag}}" | awk "NR==1"',
+                        script: 'docker images | awk "{print $1":"$2}" | awk "NR==2"',
                         returnStdout: true
                     ).trim()
                     echo "Git committer email: ${image_tag}"
