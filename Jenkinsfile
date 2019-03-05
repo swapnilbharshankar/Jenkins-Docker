@@ -27,8 +27,9 @@ pipeline {
                 script {
                     //def docker_image = sh (script: "docker images | awk '{print \$1'/:'\$2}' | awk 'NR==2'", returnStdout: true)
                     sh """#!/bin/bash
-                    image=`docker images | awk '{print \$1':'\$2}' | awk 'NR==2'`
-                    echo ${image}
+                    echo "Hello"
+                    #image=`docker images | awk '{print \$1':'\$2}' | awk 'NR==2'`
+                    #echo ${image}
                     """
                 }
             }
