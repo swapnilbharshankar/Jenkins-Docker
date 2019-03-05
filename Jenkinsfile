@@ -26,7 +26,7 @@ pipeline {
                 script {
                     try {
                         sh """#!/bin/bash
-                        echo "Hello"
+                        echo 'Hello'
                         """
                     }
                     catch (exc) {
