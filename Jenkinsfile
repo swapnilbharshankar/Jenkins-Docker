@@ -28,7 +28,7 @@ pipeline {
                         sh '''#!/bin/bash
                         echo "Hello"
                         image=`docker images | awk '{print $1":"$2}' | awk 'NR==2'`
-                        docker tag ${image} httpd:v6
+                        docker tag my-image:${env.BUILD_ID} httpd:v6
                         echo ${image}
                         '''
                     }
