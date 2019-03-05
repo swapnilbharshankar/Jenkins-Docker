@@ -25,11 +25,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh """#!/bin/bash
+                        sh '''#!/bin/bash
                         echo 'Hello'
                         image=`docker images --format '{{.Tag}}' | awk 'NR==1'`
-                        echo '${image}'
-                        """
+                        echo "${image}"
+                        '''
                     }
                     catch (exc) {
                         echo "Something failed..."
