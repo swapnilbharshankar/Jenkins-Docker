@@ -31,7 +31,7 @@ pipeline {
                     echo "Image: ${image_n}"
                     image_tag = sh (
                         script: "docker images | awk '{print \$2}' | awk 'NR==2'",
-                        returnStdout: false
+                        returnStdout: true
                     ).trim()
                     echo "Tag: ${image_tag}"
                     try {
