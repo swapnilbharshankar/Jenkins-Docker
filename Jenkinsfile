@@ -27,6 +27,8 @@ pipeline {
                     try {
                         sh '''#!/bin/bash
                         echo "Hello"
+                        image=`docker images | awk '{print $1":"$2}' | awk 'NR==2'`
+                        echo ${image}
                         '''
                     }
                     catch (exc) {
