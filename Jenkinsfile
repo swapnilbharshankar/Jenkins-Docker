@@ -24,6 +24,11 @@ pipeline {
         stage ('VAR') {
             steps {
                 script {
+                    image_tag = sh (
+                        script: 'docker images --format '\{{.Tag}}\' | awk '\NR==1\''
+                        returnStdout: true
+                    ).trim()
+                    echo "Git committer email: ${image_tag}"
                     try {
                         sh '''#!/bin/bash
                         echo 'Hello'
