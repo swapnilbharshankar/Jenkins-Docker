@@ -28,7 +28,7 @@ pipeline {
                         sh """#!/bin/bash
                         echo 'Hello'
                         image=`docker images --format '{{.Tag}}' | awk 'NR==1'`
-                        echo '$image'
+                        echo '${image}'
                         """
                     }
                     catch (exc) {
