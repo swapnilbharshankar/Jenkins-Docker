@@ -25,12 +25,15 @@ pipeline {
             steps {
                 echo "Define Vars"
                 script {
-                    //def docker_image = sh (script: "docker images | awk '{print \$1'/:'\$2}' | awk 'NR==2'", returnStdout: true)
-                    sh """#!/bin/bash
-                    echo "Hello"
-                    #image=`docker images | awk '{print \$1':'\$2}' | awk 'NR==2'`
-                    #echo ${image}
-                    """
+                    try {
+                        sh '''#!/bin/bash
+                        echo "Hello"
+                        '''
+                    }
+                    catch (exc) {
+                        echo "Something failed..."
+                        throw exc
+                    }
                 }
             }
         }
