@@ -21,6 +21,15 @@ pipeline {
                 }
             }
         }
+        stage ('VAR') {
+            steps {
+                echo "Define Vars"
+                script {
+                    def docker_image = 'demo_image'
+                    echo "${docker_image}"
+                }
+            }
+        }
         stage ('Change the Variable') {
             steps {
                 echo "Changing the Variables"
