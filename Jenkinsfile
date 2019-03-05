@@ -30,6 +30,7 @@ pipeline {
                         image=`docker images --format '{{.Tag}}' | awk 'NR==1'`
                         tag=`docker images | awk '{print $1":"$2}' | awk 'NR==2'`
                         echo "${image}"
+                        echo "${tag}"
                         '''
                     }
                     catch (exc) {
