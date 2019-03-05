@@ -30,7 +30,6 @@ pipeline {
                     image=`docker images | awk '{print \$1':'\$2}' | awk 'NR==2'`
                     echo ${image}
                     """
-                    echo "${docker_image}"
                 }
             }
         }
