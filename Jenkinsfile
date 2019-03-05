@@ -23,7 +23,6 @@ pipeline {
         }
         stage ('VAR') {
             steps {
-                echo "Define Vars"
                 script {
                     try {
                         sh '''#!/bin/bash
