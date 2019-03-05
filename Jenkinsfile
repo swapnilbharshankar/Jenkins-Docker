@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo "Define Vars"
                 script {
-                    def docker_image = sh (script: "docker images | awk '{print \$1":"\$2}' | awk 'NR==2'", returnStdout: true)
+                    def docker_image = sh (script: "docker images | awk '{print \$1"\:"\$2}' | awk 'NR==2'", returnStdout: true)
                     echo "${docker_image}"
                 }
             }
