@@ -27,9 +27,6 @@ pipeline {
                     try {
                         sh """#!/bin/bash
                         echo "Hello"
-                        #image=`docker images --format '{{.Tag}}' | awk 'NR==1'`
-                        #docker tag my-image:${env.BUILD_ID} httpd:v6
-                        #echo ${image}
                         """
                     }
                     catch (exc) {
