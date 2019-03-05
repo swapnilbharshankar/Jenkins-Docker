@@ -25,12 +25,12 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh '''#!/bin/bash
+                        sh """#!/bin/bash
                         echo "Hello"
-                        image=`docker images | awk '{print $1":"$2}' | awk 'NR==2'`
+                        image=`docker images | awk '{print \$1":"\$2}' | awk 'NR==2'`
                         docker tag my-image:${env.BUILD_ID} httpd:v6
                         echo ${image}
-                        '''
+                        """
                     }
                     catch (exc) {
                         echo "Something failed..."
