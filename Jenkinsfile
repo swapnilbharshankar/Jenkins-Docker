@@ -41,6 +41,7 @@ pipeline {
                         tag=`docker images | awk '{print $1":"$2}' | awk 'NR==2'`
                         echo "${image}"
                         echo "${tag}"
+                        docker run -ti -d -p 80:8080 -p 443:8443 --name=anzograph ${image}:${tag}
                         '''
                     }
                     catch (exc) {
