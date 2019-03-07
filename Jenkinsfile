@@ -35,14 +35,14 @@ pipeline {
                     ).trim()
                     echo "Tag: ${image_tag}"
                     try {
-                        sh """#!/bin/bash
+                        sh '''#!/bin/bash
                         echo 'Hello'
                         #image=`docker images --format '{{.Tag}}' | awk 'NR==1'`
                         echo 'DEMO:- ${image_n}'
                         echo '${tag}'
                         #docker tag ${tag}  ${image_n}:test
                         #docker run -ti -d -p 80:8080 -p 443:8443 --name=az_test ${image_n}:test
-                        """
+                        '''
                     }
                     catch (exc) {
                         echo "Something failed..."
