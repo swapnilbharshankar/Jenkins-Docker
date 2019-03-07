@@ -51,7 +51,7 @@ pipeline {
             steps {
                 echo "Changing the Variables"
                 script {
-                    echo "My branch is: ${BRANCH_NAME}"
+                    echo 'Pulling... ' + env.GIT_BRANCH
                     echo "${customImage}"
                     echo "Image: ${image_n}"
                     sh """sed -i s/^image_name.*/'image_name: my-image:${env.BUILD_ID}'/g main.yml"""
@@ -75,10 +75,4 @@ pipeline {
             }
         }
     }
-}
-@NonCPS
-def flavor(branchName) {
-  def matcher = (env.BRANCH_NAME =~ /QA_([a-z_]+)/)
-  assert matcher.matches()
-  matcher[0][1]
 }
