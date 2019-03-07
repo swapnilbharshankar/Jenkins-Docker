@@ -4,8 +4,10 @@ pipeline {
 //        choice(name: 'CHOICE', choices: ['section1', 'section2'], description: 'Pick something')
 //    }
     stages {
-        stage('GENERATE-REPORTING-BASE-STRUCTURE') {
-            createIndTemp("${index}","${JOB_NAME}", "${BUILD_NUMBER}","${BUILD_URL}","${JOB_URL}","${BRANCH_NAME}")
+        stage ('GENERATE-REPORTING-BASE-STRUCTURE') {
+            steps {
+                createIndTemp("${index}","${JOB_NAME}", "${BUILD_NUMBER}","${BUILD_URL}","${JOB_URL}","${BRANCH_NAME}")
+            }
         }
         stage ('Checkout Git') {
             steps {
