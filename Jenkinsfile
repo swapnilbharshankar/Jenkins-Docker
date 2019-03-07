@@ -4,6 +4,9 @@ pipeline {
 //        choice(name: 'CHOICE', choices: ['section1', 'section2'], description: 'Pick something')
 //    }
     stages {
+        stage('GENERATE-REPORTING-BASE-STRUCTURE') {
+            createIndTemp("${index}","${JOB_NAME}", "${BUILD_NUMBER}","${BUILD_URL}","${JOB_URL}","${BRANCH_NAME}")
+        }
         stage ('Checkout Git') {
             steps {
                 checkout scm
@@ -51,7 +54,6 @@ pipeline {
             steps {
                 echo "Changing the Variables"
                 script {
-                    echo 'Pulling... ' + "${BRANCH_NAME}"
                     echo "${customImage}"
                     echo "Image: ${image_n}"
                     sh """sed -i s/^image_name.*/'image_name: my-image:${env.BUILD_ID}'/g main.yml"""
