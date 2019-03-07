@@ -24,7 +24,7 @@ pipeline {
         stage ('VAR') {
             steps {
                 script {
-                    def image_n = sh (
+                    image_n = sh (
                         script: "docker images | awk '{print \$1}' | awk 'NR==2'",
                         returnStdout: true
                     ).trim()
