@@ -3,6 +3,9 @@ pipeline {
 //    parameters {
 //        choice(name: 'CHOICE', choices: ['section1', 'section2'], description: 'Pick something')
 //    }
+    environment {
+        reg = "abc/demo/${env.GIT_BRANCH}/end"
+    }
     stages {
         stage ('Checkout Git') {
             steps {
@@ -51,7 +54,8 @@ pipeline {
             steps {
                 echo "Changing the Variables"
                 script {
-                    sh 'printenv'
+                    echo "${env.GIT_BRANCH}"
+                    echo "${env.reg}"
                     echo "Image: ${image_n}"
                     sh """sed -i s/^image_name.*/'image_name: my-image:${env.BUILD_ID}'/g main.yml"""
                 }
