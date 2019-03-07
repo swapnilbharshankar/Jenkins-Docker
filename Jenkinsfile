@@ -34,10 +34,6 @@ pipeline {
                         returnStdout: true
                     ).trim()
                     echo "Tag: ${image_tag}"
-                    def BRANCH_NAME = getGitBranchName() {
-                        return scm.branches[0].name
-                    }
-                    echo "Branch Name: ${BRANCH_NAME}"
                     try {
                         sh """#!/bin/bash
                         echo 'DEMO:- ${image_n}'
