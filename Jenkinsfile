@@ -4,11 +4,6 @@ pipeline {
 //        choice(name: 'CHOICE', choices: ['section1', 'section2'], description: 'Pick something')
 //    }
     stages {
-        stage ('GENERATE-REPORTING-BASE-STRUCTURE') {
-            steps {
-                createIndTemp("${index}","${JOB_NAME}", "${BUILD_NUMBER}","${BUILD_URL}","${JOB_URL}","${BRANCH_NAME}")
-            }
-        }
         stage ('Checkout Git') {
             steps {
                 checkout scm
@@ -39,6 +34,10 @@ pipeline {
                         returnStdout: true
                     ).trim()
                     echo "Tag: ${image_tag}"
+                    def BRANCH_NAME = getGitBranchName() {
+                        return scm.branches[0].name
+                    }
+                    echo "Branch Name: ${BRANCH_NAME}"
                     try {
                         sh """#!/bin/bash
                         echo 'DEMO:- ${image_n}'
