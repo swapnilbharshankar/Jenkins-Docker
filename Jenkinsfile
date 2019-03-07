@@ -51,8 +51,7 @@ pipeline {
             steps {
                 echo "Changing the Variables"
                 script {
-                    echo ${env.BRANCH_NAME}
-                    echo ${env.BRANCH_NAME,fullName=false}
+                    echo "${env.BRANCH_NAME,fullName=false}"
                     echo "Image: ${image_n}"
                     sh """sed -i s/^image_name.*/'image_name: my-image:${env.BUILD_ID}'/g main.yml"""
                 }
