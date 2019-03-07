@@ -37,6 +37,7 @@ pipeline {
                     try {
                         sh """
                         echo 'DEMO:- ${image_n}'
+                        docker images | awk '{print \$2}' | awk 'NR==2'
                         """
                     }
                     catch (exc) {
